@@ -3,6 +3,8 @@ defmodule ErrorHandler do
 
   def init([]), do: {:ok, []}
 
+  def handle_call(_, state), do: {:ok, state}
+
   def handle_event(args, state) do
     IO.inspect(args, label: "ERROR HANDLER CALLED")
     {:ok, state}
