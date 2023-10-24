@@ -1,21 +1,20 @@
-# Teste
+# How to reproduce
 
-**TODO: Add description**
+This assumes you're using `asdf` to manage Elixir and Erlang installations.
 
-## Installation
+## On Elixir 1.15
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `teste` to your list of dependencies in `mix.exs`:
+1. `asdf install`
+2. `iex -S mix run`
+3. `Task.async(fn -> raise "foo" end)`
 
-```elixir
-def deps do
-  [
-    {:teste, "~> 0.1.0"}
-  ]
-end
-```
+Notice that `ERROR HANDLER CALLED` will not appear on the console, as `ErrorHandler` is not called.
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/teste](https://hexdocs.pm/teste).
+## On Elixir 1.14
 
+1. update `.tool-versions` to use `elixir 1.14.5-otp-25`
+1. `asdf install`
+3. `iex -S mix run`
+4. `Task.async(fn -> raise "foo" end)`
+
+Notice that `ERROR HANDLER CALLED` will appear on the console, as `ErrorHandler` is called.
